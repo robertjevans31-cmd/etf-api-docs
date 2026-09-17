@@ -37,6 +37,7 @@ export default defineConfig({
 
     nav: [
       { text: "Guide", link: "/getting-started" },
+      { text: "Try it now", link: "/try-it" },
       { text: "Endpoints", link: "/endpoints/" },
       { text: "Why This API", link: "/why-different" },
       { text: "Status", link: "/status" },
@@ -55,6 +56,7 @@ export default defineConfig({
         items: [
           { text: "What is this API?", link: "/" },
           { text: "Getting started", link: "/getting-started" },
+          { text: "Try it now", link: "/try-it" },
           { text: "Why this data is different", link: "/why-different" },
         ],
       },

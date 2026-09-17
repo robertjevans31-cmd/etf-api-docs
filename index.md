@@ -9,14 +9,14 @@ hero:
   tagline: Real-time ETF, leveraged/inverse, and covered-call holdings pulled directly from each issuer's own published data — with freshness, provenance, and fallback state labeled on every response, not assumed.
   actions:
     - theme: brand
+      text: Try it now
+      link: /try-it
+    - theme: alt
       text: Get started
       link: /getting-started
     - theme: alt
       text: Endpoint reference
       link: /endpoints/
-    - theme: alt
-      text: Why this data is different
-      link: /why-different
 
 features:
   - icon: 🔌
