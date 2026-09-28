@@ -58,25 +58,36 @@ auto-discovers each supported issuer's **entire** ETF lineup where a
 machine-readable listing exists, so a new launch or delisting surfaces on
 its own:
 
-| Issuer | ETFs (in-universe) | Non-ETF tracked, excluded from the count |
-|---|---:|---:|
-| State Street | 183 | 0 |
-| Vanguard | 116 | 267 mutual funds |
-| iShares | 481 | 44 mutual funds |
-| First Trust | 332 | 0 |
-| Global X | 117 | 0 |
-| VanEck | 92 | 16 mutual funds |
-| REX Shares | 64 | 0 |
-| Schwab | 37 | 0 |
-| Dimensional | 45 | 0 |
-| Volatility Shares | 18 | 0 |
-| **Total** | **1,485** | **327** |
+| Issuer | Discovered & classified ETF | Non-ETF tracked, excluded from the count | Fetch-verified |
+|---|---:|---:|---:|
+| State Street | 183 | 0 | 2 |
+| Vanguard | 116 | 267 mutual funds | 1 |
+| iShares | 481 | 44 mutual funds | 4 |
+| First Trust | 332 | 0 | 2 |
+| Global X | 117 | 0 | 3 |
+| VanEck | 92 | 16 mutual funds | 5 |
+| REX Shares | 64 | 0 | 4 |
+| Schwab | 37 | 0 | 3 |
+| Dimensional | 45 | 0 | 3 |
+| Volatility Shares | 18 | 0 | 2 |
+| **Total** | **1,485** | **327** | **29** |
 
-That's **1,485 confirmed ETFs** as of 2026-09-28 — far beyond the 37
-tickers actually registered for the live API today, and a live figure, not
-a fixed one, so expect it to move with real listing changes over time.
+That's **1,485 ETFs discovered and classified** as of 2026-09-28 — a live
+figure, not a fixed one, so expect it to move with real listing changes
+over time.
 
-::: info Why "confirmed ETFs," not just "discovered entries"
+::: warning "Classified" is not the same as "fetch-verified"
+**"Classified" means real, issuer-sourced listing evidence says it's an
+ETF — it does not mean this project has ever actually fetched that fund's
+holdings.** Of the 1,485, only **29 are fetch-verified**: also registered
+in the manually curated registry above, meaning this project has actually
+called that fund's holdings endpoint and confirmed real data comes back —
+the only tickers genuinely servable via `GET /holdings/:ticker` today. The
+remaining 1,456 are known, by real evidence, to be ETFs, but this project
+has no holdings data for them yet.
+:::
+
+::: info Why classify at all, rather than just count discovered entries
 A discovery source can't always be trusted to only list ETFs. Every
 discovered entry is classified by real evidence (never guessed) into `etf`,
 `mutual_fund`, `other`, or `unknown`, and only a confirmed `etf` counts
