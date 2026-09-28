@@ -136,10 +136,11 @@ measurement yet.
 
 ## Fund-universe discovery isn't exposed as an endpoint
 
-This API tracks roughly 1,475 discoverable funds across ten issuers (see
-[Coverage](/coverage)) for internal monitoring/alerting purposes, but
-that data isn't queryable through any endpoint yet — only the 37
-tickers in the manually curated registry are actually servable today.
+This API tracks roughly 1,485 confirmed ETFs (plus 327 non-ETF entries
+found and deliberately excluded from that count — see
+[Coverage](/coverage)) across ten issuers for internal monitoring/alerting
+purposes, but that data isn't queryable through any endpoint yet — only the
+37 tickers in the manually curated registry are actually servable today.
 
 ## No self-serve API key signup or tier upgrade
 

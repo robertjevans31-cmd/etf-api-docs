@@ -54,26 +54,38 @@ Not every ticker above needs its own hardcoded lookup:
 ## Fund-universe discovery (beyond the registered tickers)
 
 Separately from the manually curated registry above, this API also
-auto-discovers each supported issuer's **entire** fund lineup where a
+auto-discovers each supported issuer's **entire** ETF lineup where a
 machine-readable listing exists, so a new launch or delisting surfaces on
 its own:
 
-| Issuer | Funds found |
-|---|---|
-| State Street | 180 |
-| Vanguard | 116 |
-| iShares | 469 |
-| First Trust | 324 |
-| Global X | 117 |
-| VanEck | 108 |
-| REX Shares | 62 |
-| Schwab | 37 |
-| Dimensional | 45 |
-| Volatility Shares | 17 |
+| Issuer | ETFs (in-universe) | Non-ETF tracked, excluded from the count |
+|---|---:|---:|
+| State Street | 183 | 0 |
+| Vanguard | 116 | 267 mutual funds |
+| iShares | 481 | 44 mutual funds |
+| First Trust | 332 | 0 |
+| Global X | 117 | 0 |
+| VanEck | 92 | 16 mutual funds |
+| REX Shares | 64 | 0 |
+| Schwab | 37 | 0 |
+| Dimensional | 45 | 0 |
+| Volatility Shares | 18 | 0 |
+| **Total** | **1,485** | **327** |
 
-That's **1,475 discoverable funds** as of initial rollout — far beyond the
-37 tickers actually registered for the live API today. Discovery is
-purely a monitoring/alerting signal right now (a new-fund or
+That's **1,485 confirmed ETFs** as of 2026-09-28 — far beyond the 37
+tickers actually registered for the live API today, and a live figure, not
+a fixed one, so expect it to move with real listing changes over time.
+
+::: info Why "confirmed ETFs," not just "discovered entries"
+A discovery source can't always be trusted to only list ETFs. Every
+discovered entry is classified by real evidence (never guessed) into `etf`,
+`mutual_fund`, `other`, or `unknown`, and only a confirmed `etf` counts
+toward the figure above — found necessary after a VanEck discovery alert
+turned out to be for IIGCX, a mutual fund share class, not an ETF. Non-ETF
+entries aren't discarded, just excluded from this count.
+:::
+
+Discovery is purely a monitoring/alerting signal right now (a new-fund or
 delisting alert to the API operator); it doesn't expose an endpoint of
 its own yet.
 
